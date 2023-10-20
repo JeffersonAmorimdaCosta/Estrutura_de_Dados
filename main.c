@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "listadinalu.h"
 
 int main(void){
 
