@@ -19,7 +19,7 @@ typedef struct list{
 // Operações básicas:
 
 void create(StudentList *st_list); // Cria a lista vazia
-int size(StudentList *st_list); // Retorna o tamanho da lista
+int size_list(StudentList *st_list); // Retorna o tamanho da lista
 int empty(StudentList *st_list); // Retorna se a lista esta vazia
 int serchPosRegist(StudentList *st_list, int regist, int *pos); // Pesquisa posição pela matrícula - retorna pelo ponteiro pos
 int searchStudentPos(StudentList *st_list, int pos, Student *st); // Pesquisa aluno pela posição - retorna pelo ponteiro st
