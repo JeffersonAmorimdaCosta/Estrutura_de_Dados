@@ -28,3 +28,8 @@ int removeStudentRegist(StudentList *st_list); // Remove aluno da lista passando
 void displayStudents(StudentList *st_list); // Exibe a lista de alunos
 
 // Operações avançadas:
+
+int insertStudentPos(StudentList *stlist, int regist, int *pos);
+int insertSortLowerId(StudentList *stlist, int regist);
+int removeStudentPos(StudentList *stlist, int *pos);
+int schStudentNameEnrollment(Student *stlist, int regist, Student name);
