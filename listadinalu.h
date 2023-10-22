@@ -21,10 +21,10 @@ typedef struct list{
 void create(StudentList *st_list); // Cria a lista vazia
 int size_list(StudentList *st_list); // Retorna o tamanho da lista
 int empty(StudentList *st_list); // Retorna se a lista esta vazia
-int serchPosRegist(StudentList *st_list, int regist, int *pos); // Pesquisa posição pela matrícula - retorna pelo ponteiro pos
+int searchPosRegist(StudentList *st_list, int regist, int *pos); // Pesquisa posição pela matrícula - retorna pelo ponteiro pos
 int searchStudentPos(StudentList *st_list, int pos, Student *st); // Pesquisa aluno pela posição - retorna pelo ponteiro st
 int insertEnd(StudentList *st_list, Student st); // Insere aluno no final da lista
-int removeStudentRegist(StudentList *st_list); // Remove aluno da lista passando a matricula
+int removeStudentRegist(StudentList *st_list, int regist); // Remove aluno da lista passando a matricula
 void displayStudents(StudentList *st_list); // Exibe a lista de alunos
 
 // Operações avançadas:
