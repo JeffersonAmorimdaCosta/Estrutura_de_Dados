@@ -151,3 +151,7 @@ int removeStudentRegist(StudentList *st_list, int regist){
     return 0;
 }
 
+int removeStudentPos(StudentList *st_list, int pos) {
+    Node *aux = st_list->head;
+    int p;
+}
