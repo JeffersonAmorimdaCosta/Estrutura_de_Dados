@@ -153,5 +153,38 @@ int removeStudentRegist(StudentList *st_list, int regist){
 
 int removeStudentPos(StudentList *st_list, int pos) {
     Node *aux = st_list->head;
-    int p;
+    int count = 0;
+    if(pos == 0 && size_list(st_list) == 1) {
+        st_list->head == NULL;
+        free(st_list->head);
+        return 1;
+    }
+    else {
+        Node *temp = st_list->head;
+        st_list->head = st_list->head->next;
+        free(temp);
+        return 1;
+    }
+
+    Node *no_atual = st_list->head;
+    int post;
+    searchPosRegist(st_list, no_atual->next->data.registration, post);
+    while(no_atual != NULL) {
+        if(post == pos) {
+            if(no_atual->next->next == NULL) {
+                Node *aux = no_atual->next;
+                no_atual->next = NULL;
+                free(aux);
+                return 1;
+            }
+            else {
+                Node *aux = no_atual->next;
+                no_atual->next = no_atual->next->next;
+                free(aux);
+                return 1;                
+            }
+        }
+        no_atual = no_atual->next;
+    }
+    return 0;
 }
