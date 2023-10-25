@@ -112,38 +112,21 @@ int removeStudentRegist(StudentList *st_list, int regist){
         return 0;
     }
 
-    if ((st_list->head->data.registration == regist)){
-        if (size_list(st_list) == 1){
-            Node *ass = st_list->head;
-            st_list->head = NULL;
-            free(st_list->head);
-            return 1;
-        }
+    Node *first_node = st_list->head;
 
-        else{
-            Node *ass = st_list->head;
-            st_list->head = st_list->head->next;
-            free(ass);
-            return 1;
-        }
+    if ((first_node->data.registration == regist)){
+        st_list->head = first_node->next;
+        free(first_node);
+        return 1;
     }
 
     Node *current_node = st_list->head;
     while (current_node != NULL){
         if (current_node->next->data.registration == regist){
-            if (current_node->next->next == NULL){
-                Node *ass = current_node->next;
-                current_node->next = NULL;
-                free(ass);
-                return 1;
-            }
-
-            else{
-                Node *ass = current_node->next;
-                current_node->next = current_node->next->next;
-                free(ass);
-                return 1;
-            }
+            Node *ass = current_node->next;
+            current_node->next = current_node->next->next;
+            free(ass);
+            return 1;
         }
         current_node = current_node->next;
     }
@@ -151,40 +134,34 @@ int removeStudentRegist(StudentList *st_list, int regist){
     return 0;
 }
 
-int removeStudentPos(StudentList *st_list, int pos) {
-    Node *aux = st_list->head;
-    int count = 0;
-    if(pos == 0 && size_list(st_list) == 1) {
-        st_list->head == NULL;
-        free(st_list->head);
-        return 1;
+int removeStudentPos(StudentList *st_list, int pos){
+    if (empty(st_list) || pos < 0 || pos > size_list(st_list)){ // Verifica se a lista esta vazia ou a posicao informada inválida
+        return 0;
     }
-    else {
-        Node *temp = st_list->head;
-        st_list->head = st_list->head->next;
-        free(temp);
+
+    Student st_found; // Criando estudante para aproveitar a função searchStudentPos e retornar se há algum aluno nessa posicao
+
+    if (!(searchStudentPos(st_list, pos, &st_found))){
+        return 0;
+    }
+
+    if (pos == 0){ // Se for o primeiro elemento
+        Node *first_node = st_list->head;
+        st_list->head = first_node->next;
+        free(first_node);
         return 1;
     }
 
-    Node *no_atual = st_list->head;
-    int post;
-    searchPosRegist(st_list, no_atual->next->data.registration, post);
-    while(no_atual != NULL) {
-        if(post == pos) {
-            if(no_atual->next->next == NULL) {
-                Node *aux = no_atual->next;
-                no_atual->next = NULL;
-                free(aux);
-                return 1;
+    int current_pos = 0;
+    Node *current_node = st_list->head;
+    while (current_node != NULL){ // Procurar em que posição esta o estudante que irá ser removido
+        if (pos == current_pos + 1){
+            Node *ass = current_node->next;
+            current_node->next = current_node->next->next;
+            free(ass);
+            return 1;
             }
-            else {
-                Node *aux = no_atual->next;
-                no_atual->next = no_atual->next->next;
-                free(aux);
-                return 1;                
-            }
-        }
-        no_atual = no_atual->next;
+        current_node = current_node->next;
+        current_pos ++;
     }
-    return 0;
 }

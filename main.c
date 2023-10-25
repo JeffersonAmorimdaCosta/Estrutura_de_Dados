@@ -22,6 +22,13 @@ int main(void){ // Testes:
     strcpy(st2.name, "Fernando");
     st2.registration = 1011;
 
+    Student st3;
+
+    st3.grade1 = 10;
+    st3.grade2 = 10;
+    strcpy(st3.name, "Fulano dital");
+    st3.registration = 1010;
+
     if (insertEnd(&my_list, st1)){
         printf("Inserido com sucesso!\n");
     }
@@ -30,20 +37,14 @@ int main(void){ // Testes:
         printf("Inserido com sucesso!\n");
     }
 
-    Student st3;
-
-    if (searchStudentPos(&my_list, 1, &st3)){
-        printf("A matricula: %s\n", st3.name);
-    }
-
-    else{
-        printf("Nao encontrado!\n");
+    if (insertEnd(&my_list, st3)){
+        printf("Inserido com sucesso!\n");
     }
 
     displayStudents(&my_list);
 
-    if (removeStudentRegist(&my_list, 1011)){
-        printf("Aluno removido com sucesso!\n");
+    if (removeStudentRegist(&my_list, 1010)){
+        printf("Removido com sucesso!\n");
     }
 
     displayStudents(&my_list);
