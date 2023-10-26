@@ -43,11 +43,7 @@ int main(void){ // Testes:
 
     displayStudents(&my_list);
 
-    if (removeStudentRegist(&my_list, 1010)){
-        printf("Removido com sucesso!\n");
-    }
-
-    displayStudents(&my_list);
+    schStudentNameEnrollment(&my_list, &st1.registration, 0);
 
     return 0;
 }

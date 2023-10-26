@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "listadinalu.h"
 
 void create(StudentList *st_list){
@@ -163,5 +164,34 @@ int removeStudentPos(StudentList *st_list, int pos){
             }
         current_node = current_node->next;
         current_pos ++;
+    }
+}
+
+int schStudentNameEnrollment(StudentList *st_list, void *data, int type){
+    if (type == 0){
+        int *point_regist = (int *) data;
+        int st_regist = *point_regist;
+
+        Node *current_node = st_list->head;
+        while (current_node != NULL){
+            if (current_node->data.registration == st_regist){
+                printf("Nome: %s\nMatricula: %d\nNota 1: %.2f\nNota 2: %.2f\n", current_node->data.name, current_node->data.registration, current_node->data.grade1, current_node->data.grade2);
+            }
+            current_node = current_node->next;
+        }
+    }
+
+    else{
+        char *point_name = (char *) data;
+        char st_name[50];
+        strcpy(st_name, point_name);
+
+        Node *current_node = st_list->head;
+        while (current_node != NULL){
+            if (strcmp(current_node->data.name, st_name) == 0){
+                printf("Nome: %s\nMatricula: %d\nNota 1: %.2f\nNota 2: %.2f\n", st_name, current_node->data.registration, current_node->data.grade1, current_node->data.grade2);
+            }
+            current_node = current_node->next;
+        }
     }
 }
