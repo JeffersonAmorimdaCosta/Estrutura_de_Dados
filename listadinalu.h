@@ -30,6 +30,6 @@ void displayStudents(StudentList *st_list); // Exibe a lista de alunos
 // Operações avançadas:
 
 int insertStudentPos(StudentList *st_list, Student st, int pos); // Inserir um aluno numa posicao
-int insertSortLowerId(StudentList *st_list, int regist); // Inserir um aluno com matricula menor ficando antes de matricula de maior valor
+int insertSortLowerId(StudentList *st_list, Student st); // Inserir um aluno com matricula menor ficando antes de matricula de maior valor
 int removeStudentPos(StudentList *st_list, int pos); // Remover um aluno em uma posicao especifica
 int schStudentNameEnrollment(StudentList *st_list, void *data, int type); // Pesquisar um aluno pela matricula ou pelo nome se pesquisar por nome e tiver mais de um aluno com os mesmo nome mostrar o dado de todos, tipo = 0 (matricula), tipo = 1 (nome)

@@ -20,7 +20,7 @@ int main(void){ // Testes:
     st2.grade1 = 10;
     st2.grade2 = 10;
     strcpy(st2.name, "Fernando");
-    st2.registration = 1011;
+    st2.registration = 1015;
 
     Student st3;
 
@@ -29,32 +29,27 @@ int main(void){ // Testes:
     strcpy(st3.name, "Fulano dital");
     st3.registration = 1010;
 
-    if (insertEnd(&my_list, st1)){
-        printf("Inserido com sucesso!\n");
-    }
-
-    if (insertEnd(&my_list, st2)){
-        printf("Inserido com sucesso!\n");
-    }
-
-    if (insertEnd(&my_list, st3)){
-        printf("Inserido com sucesso!\n");
-    }
-
-    displayStudents(&my_list);
-
     Student st4;
 
     st4.grade1 = 10;
     st4.grade2 = 10;
     strcpy(st4.name, "Cleitin do Grau");
-    st4.registration = 1010;
-    
-    if (insertStudentPos(&my_list, st4, 2)){
-        printf("Estudante adiconado com sucesso!\n");
+    st4.registration = 1000;
+
+    if (insertSortLowerId(&my_list, st1)){
+        printf("Inserido com sucesso!\n");
     }
-    else{
-        printf("Estudante nao adicionado :/\n");
+
+    if (insertSortLowerId(&my_list, st2)){
+        printf("Inserido com sucesso!\n");
+    }
+
+    if (insertSortLowerId(&my_list, st3)){
+        printf("Inserido com sucesso!\n");
+    }
+
+    if (insertSortLowerId(&my_list, st4)){
+        printf("Inserido com sucesso!\n");
     }
 
     displayStudents(&my_list);
