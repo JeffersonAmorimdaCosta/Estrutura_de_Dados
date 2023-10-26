@@ -43,7 +43,21 @@ int main(void){ // Testes:
 
     displayStudents(&my_list);
 
-    schStudentNameEnrollment(&my_list, &st1.registration, 0);
+    Student st4;
+
+    st4.grade1 = 10;
+    st4.grade2 = 10;
+    strcpy(st4.name, "Cleitin do Grau");
+    st4.registration = 1010;
+    
+    if (insertStudentPos(&my_list, st4, 2)){
+        printf("Estudante adiconado com sucesso!\n");
+    }
+    else{
+        printf("Estudante nao adicionado :/\n");
+    }
+
+    displayStudents(&my_list);
 
     return 0;
 }

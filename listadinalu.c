@@ -195,3 +195,32 @@ int schStudentNameEnrollment(StudentList *st_list, void *data, int type){
         }
     }
 }
+
+int insertStudentPos(StudentList *st_list, Student st, int pos){
+    if (empty(st_list) || pos < 0 || pos > size_list(st_list)){
+        return 0;
+    }
+
+    Node *new_node = (Node *) malloc(sizeof(Node));
+
+    new_node->data = st;
+
+    if (pos == 0){ // Se for adicionar na primeira posicao
+        Node *ass = st_list->head;
+        st_list->head = new_node;
+        new_node->next = ass;
+        return 1;
+    }
+
+    int current_pos = 0;
+
+    Node *current_node = st_list->head; // Se não for para adicionar na primeira posicao
+    while (current_node != NULL){
+        if (pos == current_pos + 1){
+            Node *ass = current_node->next;
+            current_node->next = new_node;
+            new_node->next = ass;
+        }
+        current_node = current_node->next;
+    }
+}
