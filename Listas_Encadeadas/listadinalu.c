@@ -98,7 +98,7 @@ int searchStudentPos(StudentList *st_list, int pos, Student *st){
 
 void displayStudents(StudentList *st_list){
     if (empty(st_list)){
-        printf("A lista esta vazia!");
+        printf("A lista esta vazia!\n");
     }
 
     Node *current_node = st_list->head;

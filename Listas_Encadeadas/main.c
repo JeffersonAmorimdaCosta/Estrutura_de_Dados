@@ -13,7 +13,7 @@ int main(void){ // Testes:
     char nick[30];
 
     while(true) {
-        system("clear");
+        system("cls");
         printf("Editor de lista encadeada - Atividade 1\n");
         printf("---------------------------------------\n");
         printf("1 - Encerrar programa\n");
@@ -33,27 +33,27 @@ int main(void){ // Testes:
 
         switch(opcao) {
             case 1:
-                printf("Programa encerrado pelo usuario.");
+                printf("Programa encerrado pelo usuario.\n");
                 exit(0);
             case 2:
                 if(empty(&alunos)) {
-                    printf("\n\nSua lista esta vazia.");
+                    printf("\n\nSua lista esta vazia.\n");
                 }
                 else{
-                    printf("\n\nSua lista nao esta vazia.");
+                    printf("\n\nSua lista nao esta vazia.\n");
                 }
                 break;
             case 3:
-                printf("\nA lista possui o tamanho %d", size_list(&alunos));
+                printf("\nA lista possui o tamanho %d\n", size_list(&alunos));
                 break;
             case 4:
-                printf("\nPosição a ser pesquisada: ");
+                printf("\nPosicao a ser pesquisada: ");
                 scanf("%d", &pos);
                 if (searchStudentPos(&alunos, pos, &st)){
-                    printf("\nMatrícula do aluno: %d\n", st.registration);
+                    printf("\nMatricula do aluno: %d\n", st.registration);
                     printf("\nNome: %s\n", st.name);
-                    printf("\nNota 1: %f\n", st.grade1);
-                    printf("\n Nota 2: %f\n", st.grade2);
+                    printf("\nNota 1: %.2f\n", st.grade1);
+                    printf("\n Nota 2: %.2f\n", st.grade2);
                 }
 
                 else{
@@ -64,7 +64,7 @@ int main(void){ // Testes:
                 printf("Matricula do aluno: ");
                 scanf("%d", &matricula);
                 if (searchPosRegist(&alunos, matricula, &post)){
-                    printf("O aluno com a matricula '%d' está na posição %d\n", matricula, post);
+                    printf("O aluno com a matricula '%d' esta na posicao %d\n", matricula, post);
                 }
                 
                 else{
@@ -97,10 +97,10 @@ int main(void){ // Testes:
                 printf("\nMatricula do aluno a ser removido: ");
                 scanf("%d", &matricula);
                 if(removeStudentRegist(&alunos, matricula)) {
-                  printf("Estudante com a matrícula '%d' removido com sucesso!\n", matricula);
+                  printf("Estudante com a matricula '%d' removido com sucesso!\n", matricula);
                 }
                 else {
-                  printf("Nao ha estudante com essa matricula na lista.");
+                  printf("Nao ha estudante com essa matricula na lista.\n");
                 }
                 break;
             case 8:
@@ -125,10 +125,10 @@ int main(void){ // Testes:
                 scanf("%d", &posi);
                 printf("\n");
                 if(insertStudentPos(&alunos, aluno, posi) == 0) {
-                  printf("Posicao invalida ou lista vazia");
+                  printf("Posicao invalida ou lista vazia\n");
                 }
                 if(insertStudentPos(&alunos, aluno, posi) == 1) {
-                  printf("Aluno inserido com sucesso!");
+                  printf("Aluno inserido com sucesso!\n");
                 }
                 break;
             case 10:
@@ -182,7 +182,7 @@ int main(void){ // Testes:
                 }
                 break;
             default:
-                printf("Opção inserida é invalida.\n");
+                printf("Opcao inserida eh invalida.\n");
         }
         printf("Aperte ENTER para voltar ao menu.");
         while(getchar() != '\n');
