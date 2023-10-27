@@ -2,12 +2,13 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "listadinalu.c"
+#include "listadinalu.h"
 
 int main(void){ // Testes:
     StudentList alunos;
-    short opcao, posicao;
-    Student aluno;
+    short opcao;
+    int pos, posicap;
+    Student aluno, st;
 
     while(true) {
         system("cls");
@@ -15,16 +16,16 @@ int main(void){ // Testes:
         printf("---------------------------------------\n");
         printf("0 - Encerrar programa\n");
         printf("1 - Criar lista\n");
-        printf("2 - Verificação da lista (vazia)\n");
+        printf("2 - Verificacao da lista (vazia)\n");
         printf("3 - Tamanho da lista\n");
         printf("4 - Obter dados pela posicao\n");
-        printf("5 - Obter posição pela matricula\n");
+        printf("5 - Obter posicao pela matricula\n");
         printf("6 - Inserir aluno no final da lista\n");
         printf("7 - Remover pela matricula\n");
         printf("8 - Exibicao dos dados\n");
-        printf("9 - Inserir aluno na posição\n");
+        printf("9 - Inserir aluno na posicao\n");
         printf("10 - Inserir aluno de forma crescente\n");
-        printf("11 - Remover na posicaoo\n");
+        printf("11 - Remover na posicao\n");
         printf("12 - Pesquisar pela matricula ou nome\n\n");
         printf("Escolha uma opcao: ");
         scanf("%hd", &opcao);
@@ -48,10 +49,31 @@ int main(void){ // Testes:
                 printf("\nA lista possui o tamanho %d", size_list(&alunos));
                 break;
             case 4:
+                printf("\nPosição a ser pesquisada: ");
+                scanf("%d", pos);
+                searchStudentPos(&alunos, pos, &st);
+                printf("\nMatrícula do aluno: %d\n", st.registration);
+                printf("\nNome: %s\n", st.name);
+                printf("\nNota 1: %d\n", st.grade1);
+                printf("\n Nota 2: %d\n", st.grade2);
                 break;
             case 5:
                 break;
             case 6:
+                printf("\n");
+                printf("Matricula: ");
+                scanf("%d", &aluno.registration);
+                printf("\n");
+                printf("Nome: ");
+                scanf("%s", &aluno.name);
+                printf("\n");
+                printf("Nota 1: ");
+                scanf("%f", &aluno.grade1);
+                printf("\n");
+                printf("Nota 2: ");
+                scanf("%f", &aluno.grade2);
+                printf("\n");
+                insertEnd(&alunos, aluno);
                 break;
             case 7:
                 break;
@@ -65,7 +87,12 @@ int main(void){ // Testes:
                 break;
             case 12:
                 break;
+            default:
+                printf("Opção inserida é inválida.");
         }
+        printf("\nAperte ENTER para voltar ao menu.");
+        while(getchar() != '\n');
+        getchar();
     }
 
     return 0;
