@@ -6,16 +6,16 @@
 
 int main(void){ // Testes:
     StudentList alunos;
+    create(&alunos);
     short opcao;
-    int pos, posicap;
+    int pos, matricula, post, posi;
     Student aluno, st;
 
     while(true) {
-        system("cls");
+        system("clear");
         printf("Editor de lista encadeada - Atividade 1\n");
         printf("---------------------------------------\n");
-        printf("0 - Encerrar programa\n");
-        printf("1 - Criar lista\n");
+        printf("1 - Encerrar programa\n");
         printf("2 - Verificacao da lista (vazia)\n");
         printf("3 - Tamanho da lista\n");
         printf("4 - Obter dados pela posicao\n");
@@ -31,17 +31,14 @@ int main(void){ // Testes:
         scanf("%hd", &opcao);
 
         switch(opcao) {
-            case 0:
+            case 1:
                 printf("Programa encerrado pelo usuario.");
                 exit(0);
-            case 1:
-                create(&alunos);
-                break;
             case 2:
-                if(empty(&alunos) == 1) {
+                if(empty(&alunos)) {
                     printf("\n\nSua lista esta vazia.");
                 }
-                else if(empty(&alunos) == 0) {
+                else{
                     printf("\n\nSua lista nao esta vazia.");
                 }
                 break;
@@ -50,14 +47,23 @@ int main(void){ // Testes:
                 break;
             case 4:
                 printf("\nPosição a ser pesquisada: ");
-                scanf("%d", pos);
-                searchStudentPos(&alunos, pos, &st);
-                printf("\nMatrícula do aluno: %d\n", st.registration);
-                printf("\nNome: %s\n", st.name);
-                printf("\nNota 1: %d\n", st.grade1);
-                printf("\n Nota 2: %d\n", st.grade2);
+                scanf("%d", &pos);
+                if (searchStudentPos(&alunos, pos, &st)){
+                    printf("\nMatrícula do aluno: %d\n", st.registration);
+                    printf("\nNome: %s\n", st.name);
+                    printf("\nNota 1: %f\n", st.grade1);
+                    printf("\n Nota 2: %f\n", st.grade2);
+                }
+
+                else{
+                    printf("Aluno nao encontrado ou posicao invalida.\n");
+                }
                 break;
             case 5:
+                printf("Matricula do aluno: ");
+                scanf("%d", &matricula);
+                searchPosRegist(&alunos, matricula, &post);
+                printf("O aluno com a matricula '%d' está na posição %d\n", matricula, post);
                 break;
             case 6:
                 printf("\n");
@@ -65,7 +71,7 @@ int main(void){ // Testes:
                 scanf("%d", &aluno.registration);
                 printf("\n");
                 printf("Nome: ");
-                scanf("%s", &aluno.name);
+                scanf("%s", aluno.name);
                 printf("\n");
                 printf("Nota 1: ");
                 scanf("%f", &aluno.grade1);
@@ -76,10 +82,42 @@ int main(void){ // Testes:
                 insertEnd(&alunos, aluno);
                 break;
             case 7:
+                printf("\nMatricula do aluno a ser removido: ");
+                scanf("%d", &matricula);
+                if(removeStudentRegist(&alunos, matricula) == 1) {
+                  printf("Estudante com a matrícula '%d' removido com sucesso!\n", matricula);
+                }
+                else {
+                  printf("Não há estudante com essa matrícula na lista.");
+                }
                 break;
             case 8:
+                printf("\n");
+                displayStudents(&alunos);
                 break;
             case 9:
+                printf("\n");
+                printf("Matricula: ");
+                scanf("%d", &aluno.registration);
+                printf("\n");
+                printf("Nome: ");
+                scanf("%s", aluno.name);
+                printf("\n");
+                printf("Nota 1: ");
+                scanf("%f", &aluno.grade1);
+                printf("\n");
+                printf("Nota 2: ");
+                scanf("%f", &aluno.grade2);
+                printf("\n\n");
+                printf("Posicao que deseja inserir o aluno: ");
+                scanf("%d", &posi);
+                printf("\n");
+                if(insertStudentPos(&alunos, aluno, posi) == 0) {
+                  printf("Posicao invalida ou lista vazia");
+                }
+                if(insertStudentPos(&alunos, aluno, posi) == 1) {
+                  printf("Aluno inserido com sucesso!");
+                }
                 break;
             case 10:
                 break;
@@ -90,7 +128,7 @@ int main(void){ // Testes:
             default:
                 printf("Opção inserida é inválida.");
         }
-        printf("\nAperte ENTER para voltar ao menu.");
+        printf("Aperte ENTER para voltar ao menu.");
         while(getchar() != '\n');
         getchar();
     }
