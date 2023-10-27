@@ -6,7 +6,7 @@
 
 int main(void){ // Testes:
     StudentList alunos;
-    short opcao;
+    short opcao, posicao;
     Student aluno;
 
     while(true) {
@@ -22,7 +22,7 @@ int main(void){ // Testes:
         printf("6 - Inserir aluno no final da lista\n");
         printf("7 - Remover pela matricula\n");
         printf("8 - Exibicao dos dados\n");
-        printf("9 - Inserir aluno na posicao\n");
+        printf("9 - Inserir aluno na posição\n");
         printf("10 - Inserir aluno de forma crescente\n");
         printf("11 - Remover na posicaoo\n");
         printf("12 - Pesquisar pela matricula ou nome\n\n");
@@ -46,6 +46,24 @@ int main(void){ // Testes:
                 break;
             case 3:
                 printf("\nA lista possui o tamanho %d", size_list(&alunos));
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
                 break;
         }
     }
