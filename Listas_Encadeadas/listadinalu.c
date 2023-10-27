@@ -42,7 +42,7 @@ int searchPosRegist(StudentList *st_list, int regist, int *pos){
     Node *current_node = st_list->head;
     while (current_node != NULL){
         if (current_node->data.registration == regist){
-            *pos = count;
+            *pos = count; // Retorna o valor para pos
             return 1;
         }
         count ++;
@@ -103,7 +103,7 @@ void displayStudents(StudentList *st_list){
 
     Node *current_node = st_list->head;
     while (current_node != NULL){ // Percorre a lista e printa os nomes dos estudantes
-        printf("%s\n", current_node->data.name);
+        printf("Nome: %s\nMatricula: %d\nNota 1: %.2f\nNota 2: %.2f\n\n", current_node->data.name, current_node->data.registration, current_node->data.grade1, current_node->data.grade2);
         current_node = current_node->next;
     }
 }
