@@ -63,8 +63,13 @@ int main(void){ // Testes:
             case 5:
                 printf("Matricula do aluno: ");
                 scanf("%d", &matricula);
-                searchPosRegist(&alunos, matricula, &post);
-                printf("O aluno com a matricula '%d' está na posição %d\n", matricula, post);
+                if (searchPosRegist(&alunos, matricula, &post)){
+                    printf("O aluno com a matricula '%d' está na posição %d\n", matricula, post);
+                }
+                
+                else{
+                    printf("A lista esta vazia ou o aluno nao foi encontrado.\n");
+                }
                 break;
             case 6:
                 printf("\n");
@@ -80,16 +85,22 @@ int main(void){ // Testes:
                 printf("Nota 2: ");
                 scanf("%f", &aluno.grade2);
                 printf("\n");
-                insertEnd(&alunos, aluno);
+                if (insertEnd(&alunos, aluno)){
+                    printf("Aluno adicionado com sucesso!\n");
+                }
+
+                else{
+                    printf("Nao foi possivel alocar memoria.\n");
+                }
                 break;
             case 7:
                 printf("\nMatricula do aluno a ser removido: ");
                 scanf("%d", &matricula);
-                if(removeStudentRegist(&alunos, matricula) == 1) {
+                if(removeStudentRegist(&alunos, matricula)) {
                   printf("Estudante com a matrícula '%d' removido com sucesso!\n", matricula);
                 }
                 else {
-                  printf("Não há estudante com essa matrícula na lista.");
+                  printf("Nao ha estudante com essa matricula na lista.");
                 }
                 break;
             case 8:
@@ -133,16 +144,21 @@ int main(void){ // Testes:
                 printf("\n");
                 printf("Nota 2: ");
                 scanf("%f", &aluno.grade2);
-                insertSortLowerId(&alunos, aluno);
+                if (insertSortLowerId(&alunos, aluno)){
+                    printf("Aluno adicionado com sucesso!\n");
+                }
+                else{
+                    printf("Nao foi possivel alocar memoria.\n");
+                }
                 break;
             case 11:
                 printf("Posicao que deseja remover:");
                 scanf("%d", &pos);
-                if(removeStudentPos(&alunos, pos) == 0) {
-                    printf("Lista vazia ou posicao inexistente");
+                if(removeStudentPos(&alunos, pos)) {
+                    printf("Aluno removido com sucesso!");
                 }
                 else{
-                    printf("Aluno removido com sucesso!");
+                    printf("Lista vazia ou posicao inexistente");
                 }
              
                 break;
@@ -153,16 +169,20 @@ int main(void){ // Testes:
                 if(tipo==0) {
                   printf("Matricula a ser pesquisada: ");
                   scanf("%d", &matricula);
-                  schStudentNameEnrollment(&alunos, &matricula, tipo);
+                  if (!(schStudentNameEnrollment(&alunos, &matricula, tipo))){
+                    printf("A lista esta vazia ou algum dado nao foi encontrado.\n");
+                  }
                 }
                 else if(tipo==1) {
                   printf("Nome a ser pesquisado: ");
                   scanf("%s", nick);
-                  schStudentNameEnrollment(&alunos, &nick, tipo);
+                  if (!(schStudentNameEnrollment(&alunos, &nick, tipo))){
+                    printf("A lista esta vazia ou algum dado nao foi encontrado.\n");
+                  }
                 }
                 break;
             default:
-                printf("Opção inserida é inválida.\n");
+                printf("Opção inserida é invalida.\n");
         }
         printf("Aperte ENTER para voltar ao menu.");
         while(getchar() != '\n');
