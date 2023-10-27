@@ -168,6 +168,11 @@ int removeStudentPos(StudentList *st_list, int pos){
 }
 
 int schStudentNameEnrollment(StudentList *st_list, void *data, int type){
+
+    if (empty(st_list)){
+        return 0;
+    }
+
     if (type == 0){ // Se o tipo = 0 (matrícula)
         int *point_regist = (int *) data; // Muda o tipo do ponteiro data para int e atribui ao ponteiro "point_regist"
         int st_regist = *point_regist;
@@ -180,6 +185,7 @@ int schStudentNameEnrollment(StudentList *st_list, void *data, int type){
             }
             current_node = current_node->next;
         }
+        return 0;
     }
 
     else if (type == 1){ // Se o tipo = 1 (nome)
@@ -195,9 +201,10 @@ int schStudentNameEnrollment(StudentList *st_list, void *data, int type){
             }
             current_node = current_node->next;
         }
+        return 0;
     }
 
-    else{ // Se tipo não nem 1 nem 0
+    else{ // Se tipo não é 1 nem 0
         return 0;
     }
 }
