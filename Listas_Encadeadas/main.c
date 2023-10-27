@@ -8,8 +8,9 @@ int main(void){ // Testes:
     StudentList alunos;
     create(&alunos);
     short opcao;
-    int pos, matricula, post, posi;
+    int pos, matricula, post, posi, tipo;
     Student aluno, st;
+    char nick[30];
 
     while(true) {
         system("clear");
@@ -120,10 +121,44 @@ int main(void){ // Testes:
                 }
                 break;
             case 10:
+                printf("\n");
+                printf("Matricula: ");
+                scanf("%d", &aluno.registration);
+                printf("\n");
+                printf("Nome: ");
+                scanf("%s", aluno.name);
+                printf("\n");
+                printf("Nota 1: ");
+                scanf("%f", &aluno.grade1);
+                printf("\n");
+                printf("Nota 2: ");
+                scanf("%f", &aluno.grade2);
+              insertSortLowerId(&alunos, aluno);
                 break;
             case 11:
+                printf("Posicao que deseja remover:");
+                scanf("%d", &pos);            if(removeStudentPos(&alunos, pos) == 0) {
+  printf("Lista vazia ou posicao inexistente");
+}
+else{
+  printf("Aluno removido com sucesso!");
+}
+             
                 break;
             case 12:
+                printf("Tipo de pesquisa (0-Matricula/1-Nome): ");
+                scanf("%d", &tipo);
+                printf("\n");
+                if(tipo==0) {
+                  printf("Matricula a ser pesquisada: ");
+                  scanf("%d", &matricula);
+                  schStudentNameEnrollment(&alunos, &matricula, tipo);
+                }
+                else if(tipo==1) {
+                  printf("Nome a ser pesquisado: ");
+                  scanf("%s", nick);
+                  schStudentNameEnrollment(&alunos, &nick, tipo);
+                }
                 break;
             default:
                 printf("Opção inserida é inválida.");
