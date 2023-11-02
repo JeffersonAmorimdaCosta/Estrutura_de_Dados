@@ -4,9 +4,17 @@
 int main(void){ // Testes:
 
     orderQueue pedido;
+    paymentQueue pagamento;
+    collectQueue coletar;
 
     pedido.head = NULL;
     pedido.end = NULL;
+
+    pagamento.head = NULL;
+    pagamento.end = NULL;
+
+    coletar.head = NULL;
+    coletar.end = NULL;
 
     if (insert_orderQueue(&pedido, "Jefferson")){
         printf("Adicionado com sucesso\n");
@@ -40,7 +48,17 @@ int main(void){ // Testes:
         printf("Deu erro\n");
     }
 
-    display(&pedido);
+    display_order(&pedido);
+
+    if (remove_orderQueue(&pedido, &pagamento)){
+        printf("Removido da lista de pedido com sucesso\n");
+    }
+
+    printf("Lista de pedido:\n");
+    display_order(&pedido);
+
+    printf("Lista de pagamento:\n");
+    display_payment(&pagamento);
 
     return 0;
 }

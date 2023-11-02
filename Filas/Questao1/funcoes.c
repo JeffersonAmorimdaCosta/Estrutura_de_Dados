@@ -56,10 +56,10 @@ int insert_orderQueue(orderQueue *queue, char name[]){
     }
 }
 
-void display(orderQueue *queue){
+void display_order(orderQueue *queue){
 
-    if (queue->head ==  NULL && queue->end == NULL){
-        printf("A lista esta vazia");
+    if (empty_order(queue)){
+        printf("A lista esta vazia\n");
     }
 
     else{
@@ -69,4 +69,55 @@ void display(orderQueue *queue){
             ass = ass->next;
         }
     }
+}
+
+void display_payment(paymentQueue *queue){
+
+    if (empty_payment(queue)){
+        printf("A lista esta vazia\n");
+    }
+
+    else{
+        Node *ass = queue->head;
+        while (ass != NULL){
+            printf("%s\n", ass->name);
+            ass = ass->next;
+        }
+    }
+}
+
+void display_collect(collectQueue *queue){
+
+    if (empty_collect(queue)){
+        printf("A lista esta vazia\n");
+    }
+
+    else{
+        Node *ass = queue->head;
+        while (ass != NULL){
+            printf("%s\n", ass->name);
+            ass = ass->next;
+        }
+    }
+}
+
+int remove_orderQueue(orderQueue *order, paymentQueue *payment){
+    if (empty_order(order)){
+        return 0;
+    }
+
+    Node *ass = order->head;
+    order->head = ass->next;
+
+    if (empty_payment(payment)){
+        payment->head = payment->end = ass;
+        ass->next = NULL;
+        return 1;
+    }
+
+    payment->end->next = ass;
+    payment->end = ass;
+    ass->next = NULL;
+    return 1;
+
 }

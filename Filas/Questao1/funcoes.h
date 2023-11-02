@@ -24,7 +24,9 @@ typedef struct collect_queue{ // Fila de coletar a encomenda
 
 
 void start_queue(orderQueue *order_queue, paymentQueue *payment_queue, collectQueue *collect_queue);
-void display(orderQueue *queue);
+void display_order(orderQueue *queue);
+void display_payment(paymentQueue *queue);
+void display_collect(collectQueue *queue);
 int empty_order(orderQueue *queue);
 int empty_payment(paymentQueue *queue);
 int empty_collect(collectQueue *queue);
