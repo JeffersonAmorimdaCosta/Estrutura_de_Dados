@@ -23,14 +23,14 @@ typedef struct collect_queue{ // Fila de coletar a encomenda
 } collectQueue;
 
 
-void start_queue(orderQueue *order_queue, paymentQueue *payment_queue, collectQueue *collect_queue);
-void display_order(orderQueue *queue);
-void display_payment(paymentQueue *queue);
-void display_collect(collectQueue *queue);
-int empty_order(orderQueue *queue);
-int empty_payment(paymentQueue *queue);
-int empty_collect(collectQueue *queue);
-int insert_orderQueue(orderQueue *queue, char name[]);
-int remove_orderQueue(orderQueue *order, paymentQueue *payment);
-int remove_paymentQueue(paymentQueue *payment, collectQueue *collect);
-int remove_collectQueue(collectQueue *queue);
+void start_queue(orderQueue *order_queue, paymentQueue *payment_queue, collectQueue *collect_queue); // Cria as filas de pedido, pagamento e coletagem
+void display_order(orderQueue *queue); // Mostra a fila de pedido
+void display_payment(paymentQueue *queue); // Mostra a fila de pagamento
+void display_collect(collectQueue *queue); // Mostra a fila de coletagem
+int size_order(orderQueue *queue); // Mostra o tamanho da fila de pedido
+int size_payment(paymentQueue *queue); // Mostra o tamanho da fila de pagamento
+int size_collect(collectQueue *queue); // Mostra o tamanho da fila de coletagem
+int insert_orderQueue(orderQueue *queue, char name[]); // Insere na fila de pedido
+int remove_orderQueue(orderQueue *order, paymentQueue *payment); // Remove da fila de pedido
+int remove_paymentQueue(paymentQueue *payment, collectQueue *collect); // Remove da fila de pagamento
+int remove_collectQueue(collectQueue *collect, char *name_removed); // Remove da fila de coletagem
