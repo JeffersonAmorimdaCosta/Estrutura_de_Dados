@@ -21,7 +21,8 @@ int main(void){ // Testes:
         printf("2 - Remover cliente da fila de pedido\n");
         printf("3 - Remover cliente da fila de pagamento\n");
         printf("4 - Remover cliente da fila de encomenda\n");
-        printf("5 - Exibir as filas\n\n");
+        printf("5 - Exibir as filas\n");
+        printf("6 - Finalizar o programa.\n\n");
         printf("Opcao desejada: ");
         scanf("%hd", &opcao);
         switch(opcao){
@@ -69,8 +70,12 @@ int main(void){ // Testes:
                 printf("Fila de coleta:\n");
                 display(&coletar);
                 break;
+            case 6:
+                printf("Encerrando o programa...\n");
+                exit(1);
+                break;
             default:
-                printf("Encerrando programa.");
+                printf("Opcao invalida.");
                 exit(0);                
         }
         printf("Aperte ENTER para voltar ao menu.");
