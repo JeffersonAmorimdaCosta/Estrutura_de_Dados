@@ -5,21 +5,23 @@
 
 int main(void){ // Testes:
 
-    orderQueue pedido;
-    paymentQueue pagamento;
-    collectQueue coletar;
+    Queue pedido;
+    Queue pagamento;
+    Queue coletar;
     char nome[30], pessoa_coleta[30];
     short opcao;
 
     start_queue(&pedido, &pagamento, &coletar);
 
     while(true) {
+        system("cls");
         printf("Restaurante Rei do Mocoto - Fila inteligente\n");
         printf("--------------------------------------------\n");
         printf("1 - Inserir cliente na fila de pedido\n");
         printf("2 - Remover cliente da fila de pedido\n");
         printf("3 - Remover cliente da fila de pagamento\n");
-        printf("4 - Remover cliente da fila de encomenda\n\n");
+        printf("4 - Remover cliente da fila de encomenda\n");
+        printf("5 - Exibir as filas\n\n");
         printf("Opcao desejada: ");
         scanf("%hd", &opcao);
         switch(opcao){
@@ -34,7 +36,7 @@ int main(void){ // Testes:
                 }
                 break;
             case 2:
-                if(remove_orderQueue(&pedido, &pagamento) == 1) {
+                if(remove_queue(&pedido, &pagamento) == 1) {
                     printf("Cliente na primeira posicao da fila de pedido foi inserido na fila de pagamento\n");
                 }
                 else{
@@ -42,7 +44,7 @@ int main(void){ // Testes:
                 }
                 break;
             case 3:
-                if(remove_paymentQueue(&pagamento, &coletar) == 1) {
+                if(remove_queue(&pagamento, &coletar) == 1) {
                     printf("Cliente na primeira posicao da fila de pagamento foi inserido na fila para encomenda\n");
                 }
                 else{
@@ -56,6 +58,16 @@ int main(void){ // Testes:
                 else{
                     printf("Nao ha pessoas na fila de encomenda.\n");
                 }
+                break;
+            case 5:
+                printf("Fila de pedidos:\n");
+                display(&pedido);
+                printf("\n");
+                printf("Fila de pagamentos:\n");
+                display(&pagamento);
+                printf("\n");
+                printf("Fila de coleta:\n");
+                display(&coletar);
                 break;
             default:
                 printf("Encerrando programa.");
