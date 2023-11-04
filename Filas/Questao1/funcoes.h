@@ -1,5 +1,5 @@
 typedef struct node{
-    char name[50];
+    char name[30];
     struct node *next; 
 
 } Node;

@@ -14,10 +14,10 @@ void start_queue(orderQueue *order_queue, paymentQueue *payment_queue, collectQu
 int size_order(orderQueue *queue){
     int cont = 0;
 
-    Node *ass = queue->head;
-    while (ass != NULL){ // Percorre a fila de pedido e faz a contagem
+    Node *ast = queue->head;
+    while (ast != NULL){ // Percorre a fila de pedido e faz a contagem
         cont ++;
-        ass = ass->next;
+        ast = ast->next;
     }
 
     return cont;
@@ -26,10 +26,10 @@ int size_order(orderQueue *queue){
 int size_payment(paymentQueue *queue){
     int cont = 0;
 
-    Node *ass = queue->head;
-    while (ass != NULL){ // Percorre a fila de pagamento e faz a contagem
+    Node *ast = queue->head;
+    while (ast != NULL){ // Percorre a fila de pagamento e faz a contagem
         cont ++;
-        ass = ass->next;
+        ast = ast->next;
     }
 
     return cont;
@@ -38,10 +38,10 @@ int size_payment(paymentQueue *queue){
 int size_collect(collectQueue *queue){
     int cont = 0;
 
-    Node *ass = queue->head;
-    while (ass != NULL){ // Percorre a fila de coletagem e faz a contagem
+    Node *ast = queue->head;
+    while (ast != NULL){ // Percorre a fila de coletagem e faz a contagem
         cont ++;
-        ass = ass->next;
+        ast = ast->next;
     }
 
     return cont;
@@ -76,10 +76,10 @@ void display_order(orderQueue *queue){
     }
 
     else{
-        Node *ass = queue->head;
-        while (ass != NULL){ // Percorre a fila de pedido e exibe
-            printf("%s\n", ass->name);
-            ass = ass->next;
+        Node *ast = queue->head;
+        while (ast != NULL){ // Percorre a fila de pedido e exibe
+            printf("%s\n", ast->name);
+            ast = ast->next;
         }
     }
 }
@@ -91,10 +91,10 @@ void display_payment(paymentQueue *queue){
     }
 
     else{
-        Node *ass = queue->head;
-        while (ass != NULL){ // Percorre a fila de pagamento e exibe
-            printf("%s\n", ass->name);
-            ass = ass->next;
+        Node *ast = queue->head;
+        while (ast != NULL){ // Percorre a fila de pagamento e exibe
+            printf("%s\n", ast->name);
+            ast = ast->next;
         }
     }
 }
@@ -106,10 +106,10 @@ void display_collect(collectQueue *queue){
     }
 
     else{
-        Node *ass = queue->head;
-        while (ass != NULL){ // Percorre a fila de coletagem e exibe
-            printf("%s\n", ass->name);
-            ass = ass->next;
+        Node *ast = queue->head;
+        while (ast != NULL){ // Percorre a fila de coletagem e exibe
+            printf("%s\n", ast->name);
+            ast = ast->next;
         }
     }
 }
@@ -119,12 +119,12 @@ int remove_orderQueue(orderQueue *order, paymentQueue *payment){
         return 0;
     }
 
-    Node *ass = order->head;
-    order->head = ass->next;
+    Node *ast = order->head;
+    order->head = ast->next;
 
     if (size_payment(payment) == 0){
-        payment->head = payment->end = ass;
-        ass->next = NULL;
+        payment->head = payment->end = ast;
+        ast->next = NULL;
         return 1;
     }
 
@@ -133,9 +133,9 @@ int remove_orderQueue(orderQueue *order, paymentQueue *payment){
             order->end = NULL;
         }
 
-        payment->end->next = ass;
-        payment->end = ass;
-        ass->next = NULL;
+        payment->end->next = ast;
+        payment->end = ast;
+        ast->next = NULL;
         return 1;
     }
 
@@ -146,12 +146,12 @@ int remove_paymentQueue(paymentQueue *payment, collectQueue *collect){
         return 0;
     }
 
-    Node *ass = payment->head;
-    payment->head = ass->next;
+    Node *ast = payment->head;
+    payment->head = ast->next;
 
     if (size_collect(collect) == 0){
-        collect->head = collect->end = ass;
-        ass->next = NULL;
+        collect->head = collect->end = ast;
+        ast->next = NULL;
         return 1;
     }
 
@@ -159,9 +159,9 @@ int remove_paymentQueue(paymentQueue *payment, collectQueue *collect){
         if (size_payment(payment) == 0){
             payment->end = NULL;
         }
-        collect->end->next = ass;
-        collect->end = ass;
-        ass->next = NULL;
+        collect->end->next = ast;
+        collect->end = ast;
+        ast->next = NULL;
         return 1;
     }
 }
@@ -175,10 +175,10 @@ int remove_collectQueue(collectQueue *collect, char *name_removed){
         if (size_collect(collect) == 1){
             collect->end = NULL;
         }
-        Node *ass = collect->head;
-        collect->head = ass->next;
-        strcpy(name_removed, ass->name);
-        free(ass);
+        Node *ast = collect->head;
+        collect->head = ast->next;
+        strcpy(name_removed, ast->name);
+        free(ast);
         return 1;
 
     }
