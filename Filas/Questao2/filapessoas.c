@@ -28,12 +28,29 @@ void display(Queue *fila, Queue *filaIdosos, Queue *filaGestantes) {
     }
 
     else{
-        display_by_Preg(filaGestantes);
-        display_by_age(filaIdosos);
-        Node *ast = fila->head;
-        while (ast != NULL){ // Percorre a fila de pedido e exibe
-            printf("%s\n", ast->person->name);
-            ast = ast->next;
+        if(size_Queue_preg(filaGestantes) > 0){
+            display_by_Preg(filaGestantes);
+            display_by_age(filaIdosos);
+            Node *ast = fila->head;
+            while (ast != NULL){ // Percorre a fila de pedido e exibe
+                printf("%s\n", ast->person->name);
+                ast = ast->next;
+            }
+        }
+        else if(size_Queue_preg(filaGestantes) == 0 && size_Queue_age(filaIdosos) > 0) {
+            display_by_age(filaIdosos);
+            Node *ast = fila->head;
+            while (ast != NULL){ // Percorre a fila de pedido e exibe
+                printf("%s\n", ast->person->name);
+                ast = ast->next;
+            }
+        }
+        else if(size_Queue_preg(filaGestantes) == 0 && size_Queue_age(filaIdosos) == 0) {
+            Node *ast = fila->head;
+            while (ast != NULL){ // Percorre a fila de pedido e exibe
+                printf("%s\n", ast->person->name);
+                ast = ast->next;
+            }
         }
     }
 }
