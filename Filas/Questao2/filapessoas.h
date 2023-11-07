@@ -18,6 +18,6 @@ typedef struct queue {
 void start_Queue(Queue *fila); // Cria a fila
 void display(Queue *fila, Queue *filaIdosos, Queue *filaGestantes); // Mostra a fila
 void display_first(Queue *fila, Queue *filaIdosos, Queue *filaGestantes);
-int size_Queue(Queue *fila); // Mostra o tamanho da fila
+int size_queue(Queue *queueNormal, Queue *queueAge, Queue *queuePreg); // Mostra o tamanho da fila
 int insert_Queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes, Person p); // Insere na fila
 int remove_Queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes); // Remove da fila

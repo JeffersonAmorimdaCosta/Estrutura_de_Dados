@@ -68,22 +68,22 @@ int insert_Queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes, Person p)
         return 0;
     }
 
-    if(new_node->person->age >= 65) {
-        insert_by_age(filaIdosos, p);
-    }
     if(new_node->person->isPregnant[0] == 'S' || new_node->person->isPregnant[0] == 's') {
         insert_by_preg(filaGestantes, p);
     }
-
-    else {
-    strcpy(new_node->person->name, p.name); // Atribui o nome o novo nome recebido com parametro
-    strcpy(new_node->person->isPregnant, p.isPregnant);
-    new_node->person->age = p.age;
-    new_node->person->cpf = p.cpf;
-    new_node->next = NULL; // Define o proximo no como null
+    if(new_node->person->age >= 65) {
+        insert_by_age(filaIdosos, p);
     }
 
-    if (size_queue(fila, filaIdosos, filaGestantes) == 0){ // Verifica se está a fila está vazia
+    else {
+        strcpy(new_node->person->name, p.name); // Atribui o nome o novo nome recebido com parametro
+        strcpy(new_node->person->isPregnant, p.isPregnant);
+        new_node->person->age = p.age;
+        new_node->person->cpf = p.cpf;
+        new_node->next = NULL; // Define o proximo no como null
+    }
+
+    if (size_queue(fila, filaIdosos, filaGestantes) == 0 && size_Queue_age(filaIdosos) == 0 && size_Queue_preg(filaGestantes) == 0){ // Verifica se está a fila está vazia
         fila->head = fila->end = new_node; // Define o inicio e o fim como o novo nó
         return 1;
     }
@@ -96,5 +96,22 @@ int insert_Queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes, Person p)
 }
 
 int remove_Queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes) {
-    
+    if (size_queue(fila, filaGestantes, filaIdosos) == 0){
+        return 0;
+    }
+
+    if(size_Queue_preg(filaGestantes) == 0) {
+        if(size_Queue_age(filaIdosos) == 0) {
+            Node *temp = fila->head; // Variável assistente
+            fila->head = fila->head->next;
+            free(temp);
+            return 1;
+        }
+        else if((size_Queue_age(filaIdosos)) > 0) {
+            remove_by_age(filaIdosos);
+        }
+    }
+    else if(size_Queue_preg(filaGestantes) > 0) {
+        remove_by_preg(filaGestantes);
+    }
 }
