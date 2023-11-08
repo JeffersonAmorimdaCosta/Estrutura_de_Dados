@@ -2,7 +2,7 @@ typedef struct person {
     char name[30];
     long cpf;
     int age;
-    char isPregnant[3];
+    char isPregnant[4];
 } Person;
 
 typedef struct node{
@@ -15,9 +15,9 @@ typedef struct queue {
     Node *end;
 } Queue;
 
-void start_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes); // Cria a fila
-void display(Queue *fila, Queue *filaIdosos, Queue *filaGestantes); // Mostra a fila
-void display_first(Queue *fila, Queue *filaIdosos, Queue *filaGestantes);
-int size_queue(Queue *queueNormal, Queue *queueAge, Queue *queuePreg); // Mostra o tamanho da fila
-int insert_Queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes, Person p); // Insere na fila
-int remove_queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes); // Remove da fila
+void start_Queue(Queue *queueNormal, Queue *queueElderly, Queue *queuePregnant); // Cria a queue
+void display(Queue *queue, Queue *queueElderly, Queue *queuePregnant); // Mostra a queue
+void display_first(Queue *queue, Queue *queueElderly, Queue *queuePregnant); // Mostra o primeiro da queue
+int size_queue(Queue *queueNormal, Queue *queueAge, Queue *queuePreg); // Mostra o tamanho da queue
+int insert_Queue(Queue *queue, Queue *queueElderly, Queue *queuePregnant, Person p); // Insere na queue
+int remove_queue(Queue *queue, Queue *queueElderly, Queue *queuePregnant); // Remove da queue
