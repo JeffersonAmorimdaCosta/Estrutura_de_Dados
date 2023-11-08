@@ -36,7 +36,7 @@ int insert_preg(Queue *queuePreg, Person p) {
     strcpy(new_node->person.name, p.name);
     strcpy(new_node->person.isPregnant, p.isPregnant);
     new_node->person.age = p.age;
-    new_node->person.cpf = p.cpf;
+    strcpy(new_node->person.cpf, p.cpf);
 
     if (size_preg(queuePreg) == 0) {
         queuePreg->head = queuePreg->end = new_node;
@@ -58,7 +58,7 @@ int insert_age(Queue *queueAge, Person p) {
     strcpy(new_node->person.name, p.name);
     strcpy(new_node->person.isPregnant, p.isPregnant);
     new_node->person.age = p.age;
-    new_node->person.cpf = p.cpf;
+    strcpy(new_node->person.cpf, p.cpf);
 
     if (size_preg(queueAge) == 0) {
         queueAge->head = queueAge->end = new_node;

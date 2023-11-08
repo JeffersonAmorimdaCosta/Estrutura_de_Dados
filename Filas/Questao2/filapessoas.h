@@ -1,6 +1,6 @@
 typedef struct person {
     char name[30];
-    long cpf;
+    char cpf[12];
     int age;
     char isPregnant[4];
 } Person;

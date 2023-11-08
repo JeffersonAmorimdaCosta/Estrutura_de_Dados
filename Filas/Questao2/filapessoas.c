@@ -52,7 +52,7 @@ int insert_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes, Per
         strcpy(new_node->person.name, p.name);
         strcpy(new_node->person.isPregnant, p.isPregnant);
         new_node->person.age = p.age;
-        new_node->person.cpf = p.cpf;
+        strcpy(new_node->person.cpf, p.cpf);
 
         if (size_queue(filaNormal, filaIdosos, filaGestantes) == 0) {
             filaNormal->head = filaNormal->end = new_node;
