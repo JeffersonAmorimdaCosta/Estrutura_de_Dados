@@ -8,22 +8,17 @@ void start_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes) {
     filaNormal->head = filaNormal->end = NULL;
     filaIdosos->head = filaIdosos->end = NULL;
     filaGestantes->head = filaGestantes->end = NULL;
+    filaNormal->tamanho = 0;
+    filaIdosos->tamanho = 0;
+    filaGestantes->tamanho = 0;
 }
 
 int size_queue(Queue *queueNormal, Queue *queueAge, Queue *queuePreg) {
-    int contNormal = 0, contTotal = 0;
+    int cont = 0;
 
-    int contIdosos = size_age(queueAge); 
-    int contGestantes = size_preg(queuePreg);
+    cont = queueNormal->tamanho + queueAge->tamanho + queuePreg->tamanho;
 
-    Node *aux = queueNormal->head;
-    while(aux != NULL) {
-        contNormal++;
-        aux = aux->next;
-    }
-    contTotal = (contNormal + contGestantes + contIdosos);
-
-    return contTotal;
+    return cont;
 }
 
 int insert_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes, Person p) {
@@ -31,14 +26,16 @@ int insert_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes, Per
     for(int i = 0; p.isPregnant[i]; i++) {
       p.isPregnant[i] = toupper(p.isPregnant[i]);
     }
-  
+
     if(strcmp(p.isPregnant, "SIM") == 0) {
         if(insert_preg(filaGestantes, p) == 1) {
+            filaGestantes->tamanho++;
             return 1;
         }
     }
     if(p.age >= 65) {
         if(insert_age(filaIdosos, p) == 1) {
+            filaIdosos->tamanho++;
             return 1;
         }
     }
@@ -56,11 +53,13 @@ int insert_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes, Per
 
         if (size_queue(filaNormal, filaIdosos, filaGestantes) == 0) {
             filaNormal->head = filaNormal->end = new_node;
+            filaNormal->tamanho++;
             return 1;
         }
 
         filaNormal->end->next = new_node;
         filaNormal->end = new_node;
+        filaNormal->tamanho++;
         return 1;
     }
 }
@@ -104,11 +103,13 @@ void display(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes) {
 int remove_queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes) {
   if(size_preg(filaGestantes) > 0) {
     if(remove_preg(filaGestantes) == 1) {
+        filaGestantes->tamanho--;
         return 1;
     }
   }
   else if(size_age(filaIdosos) > 0) {
     if(remove_age(filaIdosos) == 1) {
+        filaIdosos->tamanho--;
         return 1;
     }
   }
@@ -119,6 +120,7 @@ int remove_queue(Queue *fila, Queue *filaIdosos, Queue *filaGestantes) {
     Node *temp = fila->head;
     fila->head = fila->head->next;
     free(temp);
+    fila->tamanho--;
     return 1;
   }
 }
