@@ -28,6 +28,7 @@ int size_age(Queue *queueAge){
 
 int insert_preg(Queue *queuePreg, Person p) {
     Node *new_node = (Node *) malloc(sizeof(Node));
+    new_node->next = NULL;
 
     if(new_node == NULL) {
         return 0;
@@ -50,6 +51,7 @@ int insert_preg(Queue *queuePreg, Person p) {
 
 int insert_age(Queue *queueAge, Person p) {
     Node *new_node = (Node *) malloc(sizeof(Node));
+    new_node->next = NULL;
 
     if(new_node == NULL) {
         return 0;

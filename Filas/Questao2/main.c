@@ -22,6 +22,10 @@ int main(void){
     switch (opc){
 
       case 1:
+        if(size_queue(&filaNormal, &filaIdosos, &filaGestantes) == 0) {
+          printf("Sua fila esta vazia.\n");
+          break;
+        }
         display(&filaNormal, &filaIdosos, &filaGestantes);
         break;
 
@@ -55,6 +59,10 @@ int main(void){
         break;
 
       case 4:
+        if(size_queue(&filaNormal, &filaIdosos, &filaGestantes) == 0) {
+          printf("Sua fila esta vazia.\n");
+          break;
+        }
         display_first(&filaNormal, &filaIdosos, &filaGestantes);
         break;
 

@@ -44,6 +44,7 @@ int insert_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes, Per
     }
     if (strcmp(p.isPregnant, "NAO") == 0 && p.age < 65) {
         Node *new_node = (Node*) malloc(sizeof(Node));
+        new_node->next = NULL;
 
         if(new_node == NULL) {
             return 0;
