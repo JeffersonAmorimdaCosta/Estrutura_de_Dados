@@ -10,7 +10,7 @@ int main(void){
 
   int opc;
 
-  do{
+  while (1){
     system("cls");
     printf("FILA DE PESSOAS\n");
     printf("--------------------------------\n");
@@ -67,13 +67,18 @@ int main(void){
         exit(1);
         break;
 
+      default:
+        printf("Opcao invalida\n");
+
     }
 
     printf("Pressione ENTER para continuar.\n");
     setbuf(stdin, NULL);
     getchar();
 
-  } while (opc != 6);
+  }
+
+  printf("Encerrando o programa...\n");
   
   return 0;
 }
