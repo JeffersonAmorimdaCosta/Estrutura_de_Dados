@@ -13,6 +13,7 @@ typedef struct node{
 typedef struct queue {
     Node *head;
     Node *end;
+    int tamanho;
 } Queue;
 
 void start_Queue(Queue *queueNormal, Queue *queueElderly, Queue *queuePregnant); // Cria a queue
