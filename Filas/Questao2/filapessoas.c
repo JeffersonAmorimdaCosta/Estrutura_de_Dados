@@ -67,19 +67,19 @@ int insert_Queue(Queue *filaNormal, Queue *filaIdosos, Queue *filaGestantes, Per
 
 void display_first(Queue *fila, Queue *filaIdosos, Queue *filaGestantes) {
   if(size_preg(filaGestantes) > 0) {
-    printf("CPF: %ld\n", filaGestantes->head->person.cpf);
+    printf("CPF: %s\n", filaGestantes->head->person.cpf);
     printf("Nome: %s\n", filaGestantes->head->person.name);
     printf("Idade: %d\n", filaGestantes->head->person.age);
     printf("Gestante: %s\n", filaGestantes->head->person.isPregnant);
   }
   else if(size_age(filaIdosos) > 0) {
-    printf("CPF: %ld\n", filaIdosos->head->person.cpf);
+    printf("CPF: %s\n", filaIdosos->head->person.cpf);
     printf("Nome: %s\n", filaIdosos->head->person.name);
     printf("Idade: %d\n", filaIdosos->head->person.age);
     printf("Gestante: %s\n", filaIdosos->head->person.isPregnant);
   }
   else if(size_queue(fila, filaIdosos, filaGestantes) > 0) {
-    printf("CPF: %ld\n", fila->head->person.cpf);
+    printf("CPF: %s\n", fila->head->person.cpf);
     printf("Nome: %s\n", fila->head->person.name);
     printf("Idade: %d\n", fila->head->person.age);
     printf("Gestante: %s\n", fila->head->person.isPregnant);

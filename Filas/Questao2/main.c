@@ -6,8 +6,9 @@
 int main(void){
   Queue filaNormal, filaIdosos, filaGestantes;
   Person p;
+  start_Queue(&filaNormal, &filaIdosos, &filaGestantes);
+
   int opc;
-  int valor = 10;
 
   do{
     system("cls");
@@ -25,7 +26,22 @@ int main(void){
         break;
 
       case 2:
-        printf("%d\n", valor);
+        printf("Digite o cpf:\n");
+        scanf("%s", p.cpf);
+        printf("Digite um nome:\n");
+        scanf("%s", p.name);
+        printf("Digite sua idade:\n");
+        scanf("%d", &p.age);
+        printf("Eh gestante:\n");
+        scanf("%s", p.isPregnant);
+
+        if (insert_Queue(&filaNormal, &filaIdosos, &filaGestantes, p)){
+          printf("Pessoa adicionada com sucesso\n");
+        }
+
+        else{
+          printf("Erro na alocacao de memoria.\n");
+        }
         break;
 
       case 3:
