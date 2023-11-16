@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
 #include "pilhaenc.h"
 
@@ -40,13 +41,15 @@ int stackUp(Stack *s, int value){
 
 int unstack(Stack *s){
     if (s->top == NULL){
-        return 0;
+        return INT_MIN;
     }
+
+    int value = s->top->data;
 
     Node *ast = s->top;
     s->top = ast->next;
     free(ast);
-    return 1;
+    return value;
 }
 
 void displayTop(Stack *s){
@@ -88,3 +91,19 @@ void toEmpty(Stack *s){
     return;
 }
 
+int reverse(Stack *s){
+    if (s->top == NULL){ // Verifica se a pilha está vazia
+        return 0;
+    }
+    else{
+        Stack ast_stack;
+        create(&ast_stack);
+
+        while (s->top != NULL){
+            int num = unstack(s);
+            stackUp(&ast_stack, num);
+        }
+        s->top = ast_stack.top;
+        return 1;
+    }
+}

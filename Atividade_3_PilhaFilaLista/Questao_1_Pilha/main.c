@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include "pilhaenc.h"
 
 int main(void){ // Testes:
@@ -24,13 +25,23 @@ int main(void){ // Testes:
     if (stackUp(&pilha, 40)){
         printf("Adicionado com sucesso!\n");
     }
+    if (stackUp(&pilha, 50)){
+        printf("Adicionado com sucesso!\n");
+    }
+    if (stackUp(&pilha, 60)){
+        printf("Adicionado com sucesso!\n");
+    }
+    if (stackUp(&pilha, 70)){
+        printf("Adicionado com sucesso!\n");
+    }
+
 
     display(&pilha);
     displayTop(&pilha);
 
     printf("-------------------\n");
 
-    if (unstack(&pilha)){
+    if (unstack(&pilha) != INT_MIN){
         printf("Removido com sucesso!\n");
     }
 
@@ -39,10 +50,11 @@ int main(void){ // Testes:
 
     printf("-------------------\n");
 
-    toEmpty(&pilha);
-    if (sizeStack(&pilha) == 0){
-        printf("A pilha esta vazia\n");
+    if (reverse(&pilha)){
+        printf("A pilha foi invertida com sucesso!\n");
     }
+
+    display(&pilha);
 
     return 0;
 }
