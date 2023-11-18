@@ -85,7 +85,7 @@ void toEmpty(Stack *s){
         return;
     }
 
-    while (s->top != NULL){
+    while (s->top != NULL){ // Desempilha até ficar vazia
         unstack(s);
     }
     return;
@@ -96,14 +96,14 @@ int reverse(Stack *s){
         return 0;
     }
     else{
-        Stack ast_stack;
+        Stack ast_stack; // Cria uma pilha assistente
         create(&ast_stack);
 
         while (s->top != NULL){
-            int num = unstack(s);
+            int num = unstack(s); // Remove da original e coloca na assistente
             stackUp(&ast_stack, num);
         }
-        s->top = ast_stack.top;
+        s->top = ast_stack.top; // Agora passa a referenciar a invertida (assistente)
         return 1;
     }
 }
