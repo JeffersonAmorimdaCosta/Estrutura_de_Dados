@@ -5,36 +5,33 @@
 
 int main(){
     
-    Stack pilha;
-    int opc, valor;
+    Stack pilha1, pilha2, pilha3;
+    create(&pilha1); create(&pilha2); create(&pilha3);
+    Stack *pilha_atual = &pilha1;
+    int opc, valor, atual = 1;
 
     while (1){
         system("cls");
-        printf("Editor de Pilha v1.0\n");
+        printf("Editor de Pilha v1.0 | PILHA ATUAL: Pilha %d\n", atual);
         printf("==============================\n");
-        printf("0 - Encerrar Programa\n1 - Inicializar\n2 - Empilhar\n3 - Desempilhar\n4 - Elemento do Topo\n5 - Imprimir Pilha\n6 - Inverter Elementos da Pilha\n7 - Esvaziar a Pilha\n8 - Mudar de Pilha\n\n");
+        printf("1 - Encerrar Programa\n2 - Empilhar\n3 - Desempilhar\n4 - Elemento do Topo\n5 - Imprimir Pilha\n6 - Inverter Elementos da Pilha\n7 - Esvaziar a Pilha\n8 - Mudar de Pilha\n\n");
         printf("Digite sua opcao: ");
         printf("\n");
 
         scanf("%d", &opc);
 
-        switch (opc)
-        {
-        case 0:
+        switch (opc){
+
+        case 1:
             printf("Encerrando o programa...\n");
             exit(1);
             break;
-
-        case 1:
-            create(&pilha);
-            printf("Pilha criada com sucesso!\n");
-            break;
-
+            
         case 2:
             printf("Digite o valor que deseja empilhar: \n");
             scanf("%d", &valor);
             
-            if (stackUp(&pilha, valor)){
+            if (stackUp(pilha_atual, valor)){
                 printf("Elemento inserido com sucesso!\n");
             }
             else{
@@ -44,7 +41,7 @@ int main(){
             break;
 
         case 3:
-            valor = unstack(&pilha);
+            valor = unstack(pilha_atual);
             if (valor != INT_MIN){
                 printf("O valor %d foi removido da pilha.\n", valor);
             }
@@ -54,27 +51,27 @@ int main(){
             break;
 
         case 4:
-            if (sizeStack(&pilha) == 0){
+            if (sizeStack(pilha_atual) == 0){
                 printf("Nao eh possivel exibir o elemento, porque a fila esta vazia.\n");
             }
 
             else{
-                displayTop(&pilha);
+                displayTop(pilha_atual);
             }
             break;
 
         case 5:
-            if (sizeStack(&pilha) == 0){
+            if (sizeStack(pilha_atual) == 0){
                 printf("Nao eh possivel imprimir a pilha, porque a fila esta vazia.\n");
             }
 
             else{
-                display(&pilha);
+                display(pilha_atual);
             }
             break;
 
         case 6:
-            if (reverse(&pilha)){
+            if (reverse(pilha_atual)){
                 printf("Inversao feita com sucesso!\n");
             }
 
@@ -88,7 +85,7 @@ int main(){
             scanf("%d", &valor);
 
             if (valor == 1){
-                toEmpty(&pilha);
+                toEmpty(pilha_atual);
                 printf("Pilha esvaziada com sucesso!\n");
             }
 
@@ -98,7 +95,31 @@ int main(){
             break;
         
         case 8:
-            // Falta fazer!
+            printf("Pilha 1 - [1]\nPilha 2 - [2]\nPilha 3 - [3]\n\nSelecione a pilha que desesja manipular agora: ");
+            
+            while (1){
+                scanf("%d", &valor);
+                if (valor == 1){
+                    pilha_atual = &pilha1;
+                    break;
+                }
+
+                else if (valor == 2){
+                    pilha_atual = &pilha2;
+                    break;
+                }
+
+                else if (valor == 3){
+                    pilha_atual = &pilha3;
+                    break;
+                }
+
+                else{
+                    printf("Opcao invalida! Tente novamente.\n");
+                }
+            }
+            atual = valor;
+            printf("Pilha alterada com sucesso!\n");
             break;
             
         default:
