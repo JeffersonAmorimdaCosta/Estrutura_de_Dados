@@ -25,7 +25,7 @@ int primeiro(FilaSeqCir *f, int *valor) {
     if(filaVazia(f)) {
         return 0;
     }
-    *valor = f->elementos[f->inicio];
+    *valor = f->elementos[f->inicio % MAX];
     return 1;
 }
 
@@ -33,11 +33,11 @@ int ultimo(FilaSeqCir *f, int *valor) {
     if(filaVazia(f)) {
         return 0;
     }
-    if(f->fim == 0) {
-        *valor = f->elementos[f->fim];
+    if(f->fim % MAX == 0) {
+        *valor = f->elementos[MAX - 1];
         return 1;
     }
-    *valor = f->elementos[f->fim - 1];
+    *valor = f->elementos[(f->fim - 1) % MAX];
     return 1;
 }
 
@@ -62,12 +62,17 @@ int sair(FilaSeqCir *f, int *valor) {
 }
 
 void exibir(FilaSeqCir *f) {
-    for(int i = f->inicio; i < f->fim; i++) {
-        if(i != f->fim-1) {
-            printf("%d, ", f->elementos[i % MAX]);
+    if(f->inicio <= f->fim) {
+        for(int i = f->inicio; i < f->fim; i++) {
+            printf(" %d ", f->elementos[i % MAX]);
         }
-        else if (i == f->fim-1){
-            printf("%d", f->elementos[i % MAX]);
+    }
+    else if(f->inicio > f->fim) {
+        for(int i = f->inicio; i < MAX; i++) {
+            printf(" %d ", f->elementos[i % MAX]);
+        }
+        for(int i = 0; i < f->fim; i++) {
+            printf(" %d ", f->elementos[i % MAX]);  
         }
     }
 }
