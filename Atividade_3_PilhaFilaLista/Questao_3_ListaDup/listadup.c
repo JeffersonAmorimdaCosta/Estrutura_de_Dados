@@ -21,6 +21,10 @@ int tamanho(ListaDE *l) {
 int inserirFinal(ListaDE *l, TipoTrecho t) {
     No *novo = (No*) malloc(sizeof(No));
 
+    if (novo == NULL){
+        return 0;
+    }
+
     novo->trecho = t;
     novo->ant = novo->prox = NULL;
 
@@ -51,6 +55,11 @@ int buscaPorElemento(ListaDE *l, int id) {
 
 int inserirInicio(ListaDE *l, TipoTrecho t) {
     No *novo = (No*) malloc(sizeof(No));
+
+    if (novo == NULL){
+        return 0;
+    }
+
     novo->trecho = t;
     novo->ant = novo->prox = NULL;
     l->tamanho++;
@@ -77,6 +86,11 @@ int inserirPosicao(ListaDE *l, TipoTrecho t, int pos) {
         return inserirFinal(l, t);
     }
     No *novo = (No*) malloc(sizeof(No));
+
+    if (novo == NULL){
+        return 0;
+    }
+    
     No *aux = l->inicio;
 
     for(int i = 0; i < pos - 1; i++) {
@@ -151,13 +165,28 @@ int remover(ListaDE *l, int id) {
     return 1;
 }
 
-int percursoTotal(ListaDE *l) {
-    int somaDistancias = 0;
+float percursoTotal(ListaDE *l) {
+    float somaDistancias = 0;
 
     No *aux = l->inicio;
     while(aux != NULL) {
         somaDistancias += aux->trecho.distancia;
+        aux = aux->prox;
     }
 
     return somaDistancias;
+}
+
+void exibir(ListaDE *l){
+    if (l->inicio == NULL){
+        return;
+    }
+
+    else{
+        No *aux = l->inicio;
+        while (aux != NULL){
+            printf("ID: %d\nDIRECAO: %c\nDISTANCIA: %.2f\n", aux->trecho.idTrecho, aux->trecho.direcao, aux->trecho.distancia);
+            aux = aux->prox;
+        }
+    }
 }

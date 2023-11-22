@@ -28,4 +28,4 @@ int buscaPorPosicao(ListaDE *l, int pos); // Busca ID, sentido e distância do t
 int removerInicio(ListaDE *l); // Remove um trecho no início da lista
 int removerFim(ListaDE *l); // Remove um trecho no final da lista
 int remover(ListaDE *l, int id); // Remove um trecho específico na lista pelo seu ID
-int percursoTotal(ListaDE *l); // Faz a soma de todas as distâncias e retorna o total a percorrer
+float percursoTotal(ListaDE *l); // Faz a soma de todas as distâncias e retorna o total a percorrer
