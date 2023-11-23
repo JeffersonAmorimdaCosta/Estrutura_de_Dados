@@ -51,6 +51,10 @@ int main(void) {
                     printf("Sua fila esta vazia\n");
                 break;
             case 5:
+                if(filaVazia(&f)) {
+                    printf("\nSua fila esta vazia!\n");
+                    break;
+                }
                 printf("\n");
                 printf("[");
                 exibir(&f);

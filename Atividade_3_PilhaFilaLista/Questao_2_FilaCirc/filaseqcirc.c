@@ -15,7 +15,7 @@ int filaVazia(FilaSeqCir *f) {
 }
 
 int filaCheia(FilaSeqCir *f) {
-    if((f->fim + 1) % MAX == f->inicio) {
+    if(f->tam == MAX) {
         return 1;
     }
     return 0;
@@ -62,12 +62,12 @@ int sair(FilaSeqCir *f, int *valor) {
 }
 
 void exibir(FilaSeqCir *f) {
-    if(f->inicio <= f->fim) {
+    if(f->inicio < f->fim) {
         for(int i = f->inicio; i < f->fim; i++) {
             printf(" %d ", f->elementos[i % MAX]);
         }
     }
-    else if(f->inicio > f->fim) {
+    else {
         for(int i = f->inicio; i < MAX; i++) {
             printf(" %d ", f->elementos[i % MAX]);
         }
