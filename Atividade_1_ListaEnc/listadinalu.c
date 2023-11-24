@@ -217,6 +217,10 @@ int insertStudentPos(StudentList *st_list, Student st, int pos){
 
     Node *new_node = (Node *) malloc(sizeof(Node)); // Aloca memória para o novo nó
 
+    if (new_node == NULL){
+        return 0;
+    }
+
     new_node->data = st; // o dado do novo nó vai ser o estudante (st) recebido como parãmetro
 
     if (pos == 0){ // Se for adicionar na primeira posicao

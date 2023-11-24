@@ -127,7 +127,7 @@ int main(void){ // Testes:
                 if(insertStudentPos(&alunos, aluno, posi) == 0) {
                   printf("Posicao invalida ou lista vazia\n");
                 }
-                if(insertStudentPos(&alunos, aluno, posi) == 1) {
+                else{
                   printf("Aluno inserido com sucesso!\n");
                 }
                 break;
