@@ -41,5 +41,5 @@ Funcionario *busca_func(int n, Funcionario *vf, char *nome){
     return NULL;
 }
 
-Funcionario *buscabin_func(int n, Funcionario *vf[], char *nome);
-Funcionario *exibe_top3_salarios(int n, Funcionario *vf[], char *nome);
+Funcionario *buscabin_func(int n, Funcionario *vf[], char *nome); // Fazer
+Funcionario *exibe_top3_salarios(int n, Funcionario *vf[], char *nome); // Fazer
