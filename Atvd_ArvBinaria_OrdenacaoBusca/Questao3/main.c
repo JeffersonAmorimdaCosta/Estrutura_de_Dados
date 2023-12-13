@@ -23,6 +23,7 @@ int main(void) {
 
       case 1:
         printf("Digite o nome:\n");
+        setbuf(stdin, NULL);
         scanf("%s", funcio.nome);
         printf("Digite o valor da hora:\n");
         scanf("%f", &funcio.valor_hora);
