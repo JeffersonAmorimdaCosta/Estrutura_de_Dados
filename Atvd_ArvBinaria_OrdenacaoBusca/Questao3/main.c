@@ -80,11 +80,11 @@ int main(void) {
       default:
         printf("Opcao invalida!\n");
         break;
+    }
 
-      setbuf(stdin, NULL);
-      printf("Pressione ENTER para continuar.\n");
-      getchar();
-      }
+    setbuf(stdin, NULL);
+    printf("Pressione ENTER para continuar.\n");
+    getchar();
   }
   return 0;
 }
