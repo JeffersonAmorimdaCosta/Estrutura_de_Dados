@@ -12,9 +12,9 @@ int main(void) {
   
   while (1){
     system("cls");
-    printf("Manipulação de Árvore\n");
+    printf("Manipulacao de Arvore\n");
     printf("======================================\n");
-    printf("1 - Inserir Funcionário\n2 - Remover Funcionário\n3 - Buscar Funcionário\n4 - Exibir Funcionário\n5 - Sair\n\n");
+    printf("1 - Inserir Funcionario\n2 - Remover Funcionario\n3 - Buscar Funcionario\n4 - Exibir Funcionario\n5 - Sair\n\n");
     printf("Digite sua opcao: ");
 
     scanf("%d", &opc);
