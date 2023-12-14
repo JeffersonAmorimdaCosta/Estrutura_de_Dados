@@ -40,11 +40,11 @@ int main(void) {
 
         switch(opcao) {
             case 1:
-                if(n != 0) {
-                    exibe_top3_salarios(n, vet_fpont);
+                if(n < 3) {
+                    printf("Sem funcionarios no vetor ou quantidade insuficiente.");
                 }
                 else{
-                    printf("Sem funcionarios no vetor.");
+                    exibe_top3_salarios(n, vet_fpont);
                 }
                 break;
             case 2:
@@ -75,7 +75,7 @@ int main(void) {
                 setbuf(stdin, NULL);
                 scanf("%s", name);
                 if(buscabin_func(n, vet_fpont, name) == NULL) {
-                    printf("Funcionario nao encontrado\n");
+                    printf("Funcionario nao encontrado ou nao ha funcionarios\n");
                     break;
                 }
                 else {

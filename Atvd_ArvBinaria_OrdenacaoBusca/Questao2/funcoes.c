@@ -65,10 +65,6 @@ Funcionario *buscabin_func(int n, Funcionario *vf[], char *nome) {
 
 
 Funcionario *exibe_top3_salarios(int n, Funcionario *vf[]) {
-    if (n == 0) {
-        printf("Nao ha funcionarios\n");
-        return NULL;
-    }
 
     float salario[n];
     for (int i = 0; i < n; i++) {
